@@ -6,3 +6,4 @@ type Order struct {
 	Amount float64 `json:"amount"`
 	Status string  `json:"status"`
 }
+
