@@ -1,8 +1,8 @@
 package utils
 
 import (
-	"errors"
-	"ecommerce-orders/models"
+    "errors"
+    "github.com/mjavadtavakoli/challenge-ecommerce-orders/models"
 )
 
 func ValidateOrder(o models.Order) error {

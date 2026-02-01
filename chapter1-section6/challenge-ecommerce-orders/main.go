@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"ecommerce-orders/handlers"
+    "github.com/gin-gonic/gin"
+    "github.com/mjavadtavakoli/challenge-ecommerce-orders/handlers"
 )
 
 func main() {
