@@ -35,6 +35,7 @@ func (m Money) Multiply(factor int) Money {
 }
 
 func main() {
+    // مرسی واقعا کدی که زدی تمیز و خواناست
     price := NewMoney(29.99)
     quantity := 3
     
