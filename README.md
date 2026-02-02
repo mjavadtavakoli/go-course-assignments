@@ -26,14 +26,15 @@ Project Structure
 
 The repository is organized into chapters, each containing exercises and challenges:
 ```bash 
+.
 ├── chapter1-section6
 │   ├── challenge-ecommerce-orders
 │   │   ├── Dockerfile
 │   │   ├── go.mod
 │   │   ├── go.sum
 │   │   ├── handlers
-│   │   │   ├── orders_test.go
-│   │   │   └── orders.go
+│   │   │   ├── orders.go
+│   │   │   └── orders_test.go
 │   │   ├── main.go
 │   │   ├── Makefile
 │   │   ├── models
@@ -72,13 +73,13 @@ The repository is organized into chapters, each containing exercises and challen
 │   ├── challenge-03
 │   │   └── main.go
 │   ├── exercise-01
-│   │   └── main.go
+│   │   └── Type-Basics.go
 │   ├── exercise-02
 │   │   └── main.go
 │   ├── exercise-03
-│   │   └── main.go
+│   │   └── Type-Conversion.go
 │   └── exercise-04
-│       └── main.go
+│       └── Constants-iota.go
 ├── chapter3-section5
 │   └── main.go
 ├── chapter3-section6
@@ -115,9 +116,12 @@ The repository is organized into chapters, each containing exercises and challen
 │   │   └── main.go
 │   └── exercise-06
 │       └── main.go
+├── go-closure-ratelimiter
+│   ├── main.go
+│   └── README.md
 └── README.md
 
-39 directories, 52 files
+40 directories, 54 files
 ```
 ⸻
 
