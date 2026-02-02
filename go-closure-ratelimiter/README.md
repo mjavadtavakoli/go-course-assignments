@@ -27,7 +27,18 @@ The rate limiter is created by a function that returns another function.
 This returned function is the closure.
 
 ---
-
+```mermaid
+graph TD
+    A[New Request] --> B{Token Available?}
+    B -- Yes --> C[Consume One Token]
+    C --> D[✅ Request Allowed]
+    B -- No --> E[Refill Tokens]
+    E --> F{New Token Available?}
+    F -- Yes --> C
+    F -- No --> G[❌ Rate Limit Applied]
+    G --> H[Execute Rate Limit Callback]
+```
+---
 ## 🔒 How Closures Are Used
 
 The `NewRateLimiter` function returns a function with access to internal variables:
@@ -45,4 +56,6 @@ allowing the rate limiter to maintain state safely and cleanly.
 
 ```bash
 go run main.go
+```
+
 
