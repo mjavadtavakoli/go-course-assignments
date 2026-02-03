@@ -19,3 +19,10 @@ func main() {
 	mohammadjavad.Println("Test 2:", Sumnumber([]int{-1, 0, 1}))      // Output: 0
 	mohammadjavad.Println("Test 3:", Sumnumber([]int{}))              // Output: 0
 }
+
+/* guide code
+
+first : write sumnumber function with slice
+then : create variable
+after that : write loop with range
+*/
