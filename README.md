@@ -5,16 +5,6 @@ The project is organized in chapters and sections for a step-by-step learning ex
 
 ⸻
 
-🐳 Dockerized Projects
-
-(If Dockerfile is included)
-
-docker build -t app-name .
-docker run -p 8080:8080 app-name
-
-
-⸻
-
 
 🧑‍💻 Author
 
