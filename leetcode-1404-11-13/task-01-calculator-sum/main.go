@@ -27,4 +27,5 @@ func main() {
 first : write sumnumber function with slice
 then : create variable
 after that : write loop with range
+secend : create slise in func main
 */
