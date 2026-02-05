@@ -1,3 +1,10 @@
+package main
+
+import (
+	"strings"
+	"unicode"
+)
+
 func isPalindrome(s string) bool {
 	s = strings.ToLower(s)
 
