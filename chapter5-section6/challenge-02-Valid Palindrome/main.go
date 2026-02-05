@@ -1,12 +1,12 @@
 package main
 
 import (
-	"strings"
+	strg "strings"
 	"unicode"
 )
 
 func isPalindrome(s string) bool {
-	s = strings.ToLower(s)
+	s = strg.ToLower(s) // add alias
 
 	left := 0
 	right := len(s) - 1
