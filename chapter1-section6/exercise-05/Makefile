@@ -32,6 +32,9 @@ build:
 run:
 	go run main.go
 
+vet :
+	go vet main.go
+
 # Run tests
 test:
 	@echo "Running tests..."
@@ -81,3 +84,4 @@ deps:
 	@echo "Installing dependencies..."
 	go mod download
 	go mod tidy
+	
