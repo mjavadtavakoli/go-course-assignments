@@ -7,9 +7,9 @@ func main() {
 
 	products = append(products, "Monitor")
 
-	fmt.Printf("Total products: %d\n", len(products))
+	fmt.Println("Length:", len(products))
 
-	for i, product := range products {
-		fmt.Printf("%d. %s\n", i+1, product)
+	for i, item := range products {
+		fmt.Println(i, item)
 	}
 }
