@@ -6,7 +6,7 @@ The project is organized in chapters and sections for a step-by-step learning ex
 ⸻
 
 
-🧑‍💻 Author
+Author
 
 Mohammad Javad Tavakoli
 
