@@ -3,9 +3,9 @@ package main
 import "fmt"
 
 func main() {
-	products := []string{"Laptop", "Mouse", "Keyboard"}
+	products := []string{"pride", "samand", "rana"}
 
-	products = append(products, "Monitor")
+	products = append(products, "l90")
 
 	fmt.Println("Length:", len(products))
 
