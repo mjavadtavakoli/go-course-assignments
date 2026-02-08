@@ -11,6 +11,7 @@ type User struct {
 	Name  string
 	Email string
 	Age   int
+	Price float64
 }
 
 func Structt() {
