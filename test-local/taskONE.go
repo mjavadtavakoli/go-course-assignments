@@ -6,3 +6,5 @@ can add a new student
 
 and finally prints all the students
 */
+
+package main

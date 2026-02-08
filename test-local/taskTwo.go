@@ -1,7 +1,10 @@
-/*We want to write a program that:
+/*
+We want to write a program that:
 
-Stores the name and quantity of a product
+# Stores the name and quantity of a product
 
-If the product exists, decrements its quantity
+# If the product exists, decrements its quantity
 
-Prints the ending inventory*/
+Prints the ending inventory
+*/
+package main
