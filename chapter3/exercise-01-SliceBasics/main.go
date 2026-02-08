@@ -3,13 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	products := []string{"pride", "samand", "rana"}
+	cars := []string{"pride", "samand", "rana"}
 
-	products = append(products, "l90")
+	cars = append(cars, "l90")
 
-	fmt.Println("Length:", len(products))
+	fmt.Println("Length:", len(cars))
 
-	for i, item := range products {
+	for i, item := range cars {
 		fmt.Println(i, item)
 	}
 }
