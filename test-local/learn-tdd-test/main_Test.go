@@ -1,5 +1,3 @@
-//  این فایل برای یونیت تست نوشتن است
-
 package main
 
 import (
@@ -13,5 +11,16 @@ type TestCase struct {
 }
 
 func TestSum(t *testing.T) {
-
+	testCases := []TestCase{
+		{a: 1, b: 2, expectedresult: 3},
+		{a: -1, b: 1, expectedresult: 0},
+		{a: 0, b: 0, expectedresult: 0},
+		{a: 10, b: 20, expectedresult: 30},
+	}
+	for _, testCase := range testCases {
+		result := Sum(testCase.a, testCase.b)
+		if result != testCase.expectedresult {
+			t.Errorf("Sum(%d, %d) = %d, expected %d", testCase.a, testCase.b, result, testCase.expectedresult)
+		}
+	}
 }
