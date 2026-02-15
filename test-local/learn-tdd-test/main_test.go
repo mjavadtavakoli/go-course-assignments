@@ -26,8 +26,23 @@ func TestSum(t *testing.T) {
 	}
 }
 
-func BenchmarkSum(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		Sum(1, 2)
+type TestcaseManfi struct {
+	f              int
+	h              int
+	expectedresult int
+}
+
+func TestManfi(t *testing.T) {
+	testcasemanfi := []TestcaseManfi{
+		{f: 1, h: 2, expectedresult: 3},
+		{f: -1, h: 1, expectedresult: 0},
+		{f: 0, h: 0, expectedresult: 0},
+		{f: 10, h: 20, expectedresult: 30},
+	}
+	for _, testCase := range testcasemanfi {
+		result := Sum(testCase.f, testCase.h)
+		if result != testCase.expectedresult {
+			t.Errorf("Sum(%d, %d) = %d, expected %d", testCase.f, testCase.h, result, testCase.expectedresult)
+		}
 	}
 }

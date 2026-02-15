@@ -4,3 +4,7 @@ package main
 func Sum(a int, b int) int {
 	return a + b
 }
+
+func manfi(f int, h int) int {
+	return f - h
+}
