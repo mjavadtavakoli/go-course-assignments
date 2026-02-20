@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func mainn() {
 	b := make([]int, 3, 5)
 	fmt.Println("b:", b, "len:", len(b), "cap:", cap(b))
 
