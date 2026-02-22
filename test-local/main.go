@@ -2,15 +2,20 @@ package main
 
 import "fmt"
 
-func mainn() {
-	b := make([]int, 3, 5)
-	fmt.Println("b:", b, "len:", len(b), "cap:", cap(b))
+var target = 7
+var input int
 
+func main() {
+
+	fmt.Sscanf(&input)
+
+	if input > target {
+		fmt.Println("Too big")
+	}else if input < target {
+		fmt.Println("Too small")
+	}else input == target {
+		fmt.Println("curecct")
+	}
 }
+	
 
-/*
-len
-cat
-append
-copy
-*/
