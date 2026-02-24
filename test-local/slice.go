@@ -88,7 +88,7 @@ func slice() {
 	a2 := []int{3, 4}
 
 	a1 = append(a1, a2...)
-	fmt.Println("merged:", a1)
+	fmt.Println("merged :", a1)
 
 	// =========================
 	// 10) capacity growth
