@@ -141,7 +141,7 @@ The repository is organized into chapters, each containing exercises and challen
     ├── taskONE.go
     └── taskTwo.go
 
-48 directories, 76 files
+48 directories, 84 files
 ```
 ⸻
 
