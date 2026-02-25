@@ -1,21 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
-var target = 7
-var input int
+func maind() {
+	var target = 7
+	var input int
 
-func main() {
-
-	fmt.Sscanf(&input)
+	fmt.Scan(input)
 
 	if input > target {
-		fmt.Println("Too big")
-	}else if input < target {
-		fmt.Println("Too small")
-	}else input == target {
-		fmt.Println("curecct")
+		fmt.Println("your nubmer big from 7")
 	}
 }
-	
-
