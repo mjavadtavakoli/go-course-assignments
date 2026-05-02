@@ -148,7 +148,6 @@ The repository is organized into chapters, each containing exercises and challen
 📚 Prerequisites
 	•	Go 1.21+
 	•	Git
-	•	Docker (optional)
 
 ⸻
 
