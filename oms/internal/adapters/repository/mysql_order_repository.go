@@ -2,9 +2,7 @@ package repository
 
 import (
 	"database/sql"
-	"errors"
-
-	"oms/internal/core/domain"
+	"oms/internal/domain"
 )
 
 type MySQLOrderRepository struct {
@@ -12,12 +10,24 @@ type MySQLOrderRepository struct {
 }
 
 func NewMySQLOrderRepository(db *sql.DB) *MySQLOrderRepository {
-	return &MySQLOrderRepository{db: db}
+	return &MySQLOrderRepository{
+		db: db,
+	}
 }
 
 func (r *MySQLOrderRepository) Create(order *domain.Order) error {
-	query := `INSERT INTO orders (customer_name, status, created_at) VALUES (?, ?, ?)`
-	result, err := r.db.Exec(query, order.CustomerName, order.Status, order.CreatedAt)
+
+	query := `
+	INSERT INTO orders(customer_name, amount)
+	VALUES (?, ?)
+	`
+
+	result, err := r.db.Exec(
+		query,
+		order.CustomerName,
+		order.Amount,
+	)
+
 	if err != nil {
 		return err
 	}
@@ -28,22 +38,33 @@ func (r *MySQLOrderRepository) Create(order *domain.Order) error {
 	}
 
 	order.ID = id
+
 	return nil
 }
 
 func (r *MySQLOrderRepository) GetByID(id int64) (*domain.Order, error) {
-	query := `SELECT id, customer_name, status, created_at FROM orders WHERE id = ?`
+
+	query := `
+	SELECT id, customer_name, amount
+	FROM orders
+	WHERE id = ?
+	`
 
 	row := r.db.QueryRow(query, id)
 
 	order := &domain.Order{}
-	err := row.Scan(&order.ID, &order.CustomerName, &order.Status, &order.CreatedAt)
+
+	err := row.Scan(
+		&order.ID,
+		&order.CustomerName,
+		&order.Amount,
+	)
+
 	if err != nil {
-		if err == sql.ErrNoRows {
-			return nil, errors.New("order not found")
-		}
 		return nil, err
 	}
+
+	order.Statuses = []string{"CREATED"}
 
 	return order, nil
 }

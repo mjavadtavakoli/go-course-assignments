@@ -1,6 +1,6 @@
 package ports
 
-import "oms/internal/core/domain"
+import "oms/internal/domain"
 
 type OrderRepository interface {
 	Create(order *domain.Order) error
