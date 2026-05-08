@@ -23,6 +23,8 @@ func main() {
 
 	router.POST("/oms/api/orders", handler.CreateOrder)
 	router.GET("/oms/api/orders/:id", handler.GetOrder)
+	router.GET("/oms/api/orders", handler.GetOrders)
+	router.PUT("/oms/api/orders/:id", handler.UpdateOrder)
 
 	router.Run(":8080")
 }

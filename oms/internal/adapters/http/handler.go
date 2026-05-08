@@ -63,3 +63,46 @@ func (h *Handler) GetOrder(c *gin.Context) {
 
 	c.JSON(http.StatusOK, order)
 }
+
+func (h *Handler) GetOrders(c *gin.Context) {
+	orders, err := h.service.GetAllOrders()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, orders)
+}
+
+func (h *Handler) UpdateOrder(c *gin.Context) {
+	idParam := c.Param("id")
+
+	id, err := strconv.ParseInt(idParam, 10, 64)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "invalid id",
+		})
+		return
+	}
+
+	var order domain.Order
+	if err := c.ShouldBindJSON(&order); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	order.ID = id
+
+	if err := h.service.UpdateOrder(&order); err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+
+	c.JSON(http.StatusOK, order)
+}

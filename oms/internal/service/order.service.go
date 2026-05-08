@@ -24,3 +24,11 @@ func (s *OrderService) CreateOrder(order *domain.Order) error {
 func (s *OrderService) GetOrder(id int64) (*domain.Order, error) {
 	return s.repo.GetByID(id)
 }
+
+func (s *OrderService) GetAllOrders() ([]domain.Order, error) {
+	return s.repo.GetAll()
+}
+
+func (s *OrderService) UpdateOrder(order *domain.Order) error {
+	return s.repo.Update(order)
+}
