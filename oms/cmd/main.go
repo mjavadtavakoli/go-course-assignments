@@ -27,6 +27,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	logger.Log.Println("application started")
 
 	router.POST("/oms/api/orders", handler.CreateOrder)
 	router.GET("/oms/api/orders/:id", handler.GetOrder)
