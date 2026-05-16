@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"runtime"
 	"sync"
 )
 
@@ -25,7 +24,7 @@ import (
 //use sync.waitgroup(add-wait-doness)
 
 func main() {
-	runtime.GOMAXPROCS(1)
+
 	var wg sync.WaitGroup
 
 	wg.Add(2)
