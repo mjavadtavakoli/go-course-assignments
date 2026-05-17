@@ -3,6 +3,7 @@ package repository
 import (
 	"database/sql"
 	"oms/internal/domain"
+	"oms/internal/logger"
 )
 
 type MySQLOrderRepository struct {
@@ -29,15 +30,33 @@ func (r *MySQLOrderRepository) Create(order *domain.Order) error {
 	)
 
 	if err != nil {
+		logger.Log.Printf(
+			"failed to insert order into mysql: error=%v",
+			err,
+		)
+
 		return err
 	}
 
 	id, err := result.LastInsertId()
 	if err != nil {
+
+		logger.Log.Printf(
+			"failed to get last insert id: error=%v",
+			err,
+		)
+
 		return err
 	}
 
 	order.ID = id
+
+	logger.Log.Printf(
+		"order created successfully in mysql: id=%d customer=%s amount=%.2f",
+		order.ID,
+		order.CustomerName,
+		order.Amount,
+	)
 
 	return nil
 }
@@ -98,11 +117,37 @@ func (r *MySQLOrderRepository) GetAll() ([]domain.Order, error) {
 }
 
 func (r *MySQLOrderRepository) Update(order *domain.Order) error {
+
 	query := `
 	UPDATE orders
 	SET customer_name = ?, amount = ?
 	WHERE id = ?
 	`
-	_, err := r.db.Exec(query, order.CustomerName, order.Amount, order.ID)
-	return err
+
+	_, err := r.db.Exec(
+		query,
+		order.CustomerName,
+		order.Amount,
+		order.ID,
+	)
+
+	if err != nil {
+
+		logger.Log.Printf(
+			"failed to update order: id=%d error=%v",
+			order.ID,
+			err,
+		)
+
+		return err
+	}
+
+	logger.Log.Printf(
+		"order updated successfully: id=%d customer=%s amount=%.2f",
+		order.ID,
+		order.CustomerName,
+		order.Amount,
+	)
+
+	return nil
 }
