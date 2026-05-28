@@ -143,7 +143,7 @@ func (r *MySQLOrderRepository) Update(order *domain.Order) error {
 	}
 
 	logger.Log.Printf(
-		"order updated successfully: id=%d customer=%s amount=%.2f",
+		"order updated successfully in mysql: id=%d customer=%s amount=%.2f",
 		order.ID,
 		order.CustomerName,
 		order.Amount,

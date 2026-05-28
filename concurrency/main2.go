@@ -1,61 +1,56 @@
 package main
 
 import (
+	"context"
 	"fmt"
-	"sync"
+	"time"
 )
 
-/*func main() {
-	var a, b, c int
-	go func() {
-		a = 1
-	}()
-	go func() {
-		b = 2
-	}()
-	go func() {
-		b = 3
-	}()
-
-	fmt.Println(a + b + c)
+type order struct {
+	price int
+	id    string
 }
-*/
-
-//use sync.waitgroup(add-wait-doness)
 
 func main() {
+	ctx, cancel := context.WithTimeout(context.Background(), 1*time.Second)
+	defer cancel()
 
-	var wg sync.WaitGroup
+	orderCh := receiveOrdersWithTimeout(ctx, "1", "2", "3", "4", "5")
 
-	wg.Add(2)
-
-	go func() {
-		Printlettrs()
-		wg.Done()
-	}()
-
-	go func() {
-		Printnumbers()
-		wg.Done()
-	}()
-
-	wg.Wait()
-	fmt.Println("finished")
+	validOrderCh := validateOrderss(orderCh)
+	for order := range validOrderCh {
+		fmt.Println(order)
+	}
 }
 
-func Printlettrs() {
+func receiveOrdersWithTimeout(ctx context.Context, ids ...string) chan order {
+	orderCh := make(chan order, len(ids))
+	price := -2
 
-	for i := 'A'; i <= 'Z'; i++ {
-		fmt.Print(string(i))
-		//time.Sleep(time.Millisecond * 50)
-	}
-
+	go func() {
+		defer close(orderCh)
+		for _, id := range ids {
+			select {
+			case <-ctx.Done():
+				fmt.Println("Receive orders timed out or cancelled.")
+				return
+			case orderCh <- order{price: price, id: id}:
+				price += 1
+			}
+		}
+	}()
+	return orderCh
 }
 
-func Printnumbers() {
-	for i := 1; i <= 50; i++ {
-		fmt.Print(i)
-		//time.Sleep(time.Millisecond * 50)
-	}
-
+func validateOrderss(in <-chan order) chan order {
+	validOrderCh := make(chan order, 10)
+	go func() {
+		defer close(validOrderCh)
+		for order := range in {
+			if order.price >= 0 {
+				validOrderCh <- order
+			}
+		}
+	}()
+	return validOrderCh
 }
